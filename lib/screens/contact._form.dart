@@ -1,3 +1,4 @@
+import 'package:bytebank2/database/app_database.dart';
 import 'package:bytebank2/models/contact.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -58,7 +59,9 @@ class _ContactFormState extends State<ContactForm> {
                         int.tryParse(_accountNumberController.text);
 
                     if (name.isNotEmpty && accountNumber != null) {
-                      Navigator.pop(context, Contact(name, accountNumber));
+                      final Contact newContact =
+                          Contact(0, name, accountNumber);
+                      save(newContact).then((id) => Navigator.pop(context));
                     }
                   },
                   child: const Text('Create'),

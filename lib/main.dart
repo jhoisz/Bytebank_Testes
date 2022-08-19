@@ -1,10 +1,12 @@
-import 'package:bytebank2/screens/contact._form.dart';
-import 'package:bytebank2/screens/contacts_list.dart';
+import 'package:bytebank2/database/app_database.dart';
+import 'package:bytebank2/models/contact.dart';
 import 'package:bytebank2/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const Bytebank2App());
+
+  // save(Contact(1, 'Jhois', 1000));
 }
 
 class Bytebank2App extends StatelessWidget {
@@ -15,7 +17,7 @@ class Bytebank2App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.green[900],
+        primarySwatch: Colors.green,
         buttonTheme: ButtonThemeData(
           buttonColor: Colors.blueAccent[700],
           textTheme: ButtonTextTheme.primary,

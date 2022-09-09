@@ -1,4 +1,4 @@
-import 'package:bytebank2/database/app_database.dart';
+import 'package:bytebank2/database/dao/contact_dao.dart';
 import 'package:bytebank2/models/contact.dart';
 import 'package:bytebank2/screens/contact._form.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +11,8 @@ class ContactsList extends StatefulWidget {
 }
 
 class _ContactsListState extends State<ContactsList> {
+  final ContactDao _dao = ContactDao();
+
   @override
   Widget build(BuildContext context) {
     // contacts.add(Contact(1, 'Fulano de Tal', 9876));
@@ -20,23 +22,31 @@ class _ContactsListState extends State<ContactsList> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contacts'),
+        title: const Text("Hello World!"),
+        automaticallyImplyLeading:
+            false, //determina que o Flutter não deve "setar" o leading automaticamente
+        leading: IconButton(
+          //leading com IconButton
+          icon: const Icon(Icons.arrow_back_ios_sharp), //ícone do botão
+          onPressed: () => {
+            //Coloque aqui a função que você quer que o botão faça!
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const ContactForm(),
-              ),
-            );
-          });
+        onPressed: () async {
+          await Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const ContactForm(),
+            ),
+          );
+          setState(() {});
         },
         child: const Icon(Icons.add),
       ),
       body: FutureBuilder<List<Contact>>(
         initialData: const [],
-        future: findAll(),
+        future: _dao.findAll(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -85,14 +95,14 @@ class _ContactItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: Icon(Icons.people),
+        leading: const Icon(Icons.people),
         title: Text(
           contact.name,
-          style: TextStyle(fontSize: 24),
+          style: const TextStyle(fontSize: 24),
         ),
         subtitle: Text(
           contact.accountNumber.toString(),
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
         ),
       ),
     );

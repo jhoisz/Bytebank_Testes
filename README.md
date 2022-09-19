@@ -1,5 +1,3 @@
-# bytebank v2
+# bytebank-api
 
 :construction: Projeto em construção :construction:
-# bytebank-api
-# bytebank-api

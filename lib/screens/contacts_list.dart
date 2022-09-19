@@ -15,23 +15,9 @@ class _ContactsListState extends State<ContactsList> {
 
   @override
   Widget build(BuildContext context) {
-    // contacts.add(Contact(1, 'Fulano de Tal', 9876));
-    // contacts.add(Contact(1, 'Fulano de Tal', 9876));
-    // contacts.add(Contact(1, 'Fulano de Tal', 9876));
-    // contacts.add(Contact(1, 'Fulano de Tal', 9876));
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Hello World!"),
-        automaticallyImplyLeading:
-            false, //determina que o Flutter não deve "setar" o leading automaticamente
-        leading: IconButton(
-          //leading com IconButton
-          icon: const Icon(Icons.arrow_back_ios_sharp), //ícone do botão
-          onPressed: () => {
-            //Coloque aqui a função que você quer que o botão faça!
-          },
-        ),
+        title: const Text("Transfer"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {

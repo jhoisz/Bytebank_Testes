@@ -38,13 +38,13 @@ class Dashboard extends StatelessWidget {
                   icon: Icons.description,
                   onClick: () => _showTransactionsList(context),
                 ),
-                _FeatureItem(
-                  name: 'Transaction Feed',
-                  icon: Icons.description,
-                  onClick: () {
-                    print('transaction');
-                  },
-                ),
+                // _FeatureItem(
+                //   name: 'Transaction Feed',
+                //   icon: Icons.description,
+                //   onClick: () {
+                //     print('transaction');
+                //   },
+                // ),
               ],
             ),
           ),

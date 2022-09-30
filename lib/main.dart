@@ -1,11 +1,19 @@
-import 'package:bytebank2/http/webclient.dart';
-import 'package:bytebank2/models/transaction.dart';
 import 'package:bytebank2/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const Bytebank2App());
-  findAll().then((transactions) => print('new transaction $transactions'));
+  // save(
+  //   Transaction(
+  //     200,
+  //     Contact(0, 'Gui', 2000),
+  //   ),
+  // ).then(
+  //   (transaction) {
+  //     print(transaction);
+  //   },
+  // );
+  // findAll().then((transactions) => print('new transaction $transactions'));
   // save(Contact(1, 'Jhois', 1000));
 }
 

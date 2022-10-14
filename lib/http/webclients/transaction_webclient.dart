@@ -19,12 +19,12 @@ class TransactionWebClient {
       // print(e);
       return null;
     }
-    return null;
+    // return null;
 
     // print(response.body);
   }
 
-  Future<Transaction> save(Transaction transaction, String password) async {
+  Future<Transaction?> save(Transaction transaction, String password) async {
     final String transactionJson = jsonEncode(transaction.toJson());
 
     final Response response = await client.post(
@@ -36,8 +36,19 @@ class TransactionWebClient {
       body: transactionJson,
     );
 
-    return Transaction.fromJson(jsonDecode(response.body));
+    if (response.statusCode == 200) {
+      return Transaction.fromJson(jsonDecode(response.body));
+    }
+    throwHttpError(response.statusCode);
   }
+
+  void throwHttpError(int statusCode) =>
+      throw Exception(_statusCodeResponses[statusCode]);
+
+  static final Map<int, String> _statusCodeResponses = {
+    400: 'there was an error submitting transaction',
+    401: 'authentication failed',
+  };
 }
 
 

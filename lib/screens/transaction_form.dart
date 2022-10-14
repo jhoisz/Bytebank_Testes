@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bytebank2/components/response_dialog.dart';
 import 'package:bytebank2/components/transaction_auth_dialog.dart';
 import 'package:bytebank2/http/webclients/transaction_webclient.dart';
@@ -96,23 +98,51 @@ class _TransactionFormState extends State<TransactionForm> {
     String password,
     BuildContext context,
   ) async {
-    final Transaction? transaction =
-        await _webClient.save(transactionCreated, password).catchError((e) {
-      showDialog(
-          context: context,
-          builder: (contextDialog) {
-            return FailureDialog(e.toString());
-          });
-      print(e);
-    }, test: (e) => e is Exception);
+    Transaction? transaction =
+        await _send(transactionCreated, password, context);
 
+    if (transaction != null) {
+      if (!mounted) return;
+      await _showSuccessfullMessage(context);
+      if (!mounted) return;
+      Navigator.pop(context);
+    }
+  }
+
+  Future<void> _showSuccessfullMessage(BuildContext context) async {
     await showDialog(
       context: context,
       builder: (contextDialog) {
         return const SuccessDialog('successful transaction');
       },
     );
-    if (!mounted) return;
-    Navigator.pop(context);
+  }
+
+  Future<Transaction?> _send(Transaction transactionCreated, String password,
+      BuildContext context) async {
+    final Transaction? transaction =
+        await _webClient.save(transactionCreated, password).catchError((e) {
+      _showFailureMessage(context, e.message);
+      // print(e);
+    }, test: (e) => e is HttpException).catchError((e) {
+      _showFailureMessage(context, 'timeout submitting the transaction');
+      // print(e);
+    }, test: (e) => e is TimeoutException).catchError((e) {
+      _showFailureMessage(context, e.message);
+      // print(e);
+    });
+    return transaction;
+  }
+
+  void _showFailureMessage(
+    BuildContext context,
+    String? message,
+  ) {
+    showDialog(
+      context: context,
+      builder: (contextDialog) {
+        return FailureDialog(message ?? 'Unknown Error');
+      },
+    );
   }
 }

@@ -7,6 +7,7 @@ class ResponseDialog extends StatelessWidget {
   final IconData? icon;
   final Color colorIcon;
 
+  // ignore: use_key_in_widget_constructors
   const ResponseDialog({
     this.title = "",
     this.message = "",
@@ -45,7 +46,7 @@ class ResponseDialog extends StatelessWidget {
               child: Text(
                 message,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 24.0,
                 ),
               ),
@@ -54,7 +55,7 @@ class ResponseDialog extends StatelessWidget {
         ],
       ),
       actions: <Widget>[
-        FlatButton(
+        ElevatedButton(
           child: Text(buttonText),
           onPressed: () => Navigator.pop(context),
         )
@@ -68,6 +69,7 @@ class SuccessDialog extends StatelessWidget {
   final String message;
   final IconData icon;
 
+  // ignore: use_key_in_widget_constructors
   const SuccessDialog(
     this.message, {
     this.title = 'Success',
@@ -90,6 +92,7 @@ class FailureDialog extends StatelessWidget {
   final String message;
   final IconData icon;
 
+  // ignore: use_key_in_widget_constructors
   const FailureDialog(
     this.message, {
     this.title = 'Failure',

@@ -6,12 +6,14 @@ import 'package:bytebank2/http/webclients/transaction_webclient.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
+import '../components/progress.dart';
 import '../models/contact.dart';
 import '../models/transaction.dart';
 
 class TransactionForm extends StatefulWidget {
   final Contact contact;
 
+  // ignore: use_key_in_widget_constructors
   const TransactionForm(this.contact);
 
   @override
@@ -22,10 +24,12 @@ class _TransactionFormState extends State<TransactionForm> {
   final TextEditingController _valueController = TextEditingController();
   final TransactionWebClient _webClient = TransactionWebClient();
   final String transactionId = const Uuid().v4();
+  bool _sending = false;
 
   @override
   Widget build(BuildContext context) {
     // print('transaction form id $transactionId');
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('New transaction'),
@@ -36,6 +40,15 @@ class _TransactionFormState extends State<TransactionForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              Visibility(
+                visible: _sending,
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Progress(
+                    message: 'Sending...',
+                  ),
+                ),
+              ),
               Text(
                 widget.contact.name,
                 style: const TextStyle(
@@ -101,6 +114,10 @@ class _TransactionFormState extends State<TransactionForm> {
     String password,
     BuildContext context,
   ) async {
+    setState(() {
+      _sending = true;
+    });
+
     Transaction? transaction =
         await _send(transactionCreated, password, context);
 
@@ -133,6 +150,10 @@ class _TransactionFormState extends State<TransactionForm> {
     }, test: (e) => e is TimeoutException).catchError((e) {
       _showFailureMessage(context, e.message);
       // print(e);
+    }).whenComplete(() async {
+      setState(() {
+        _sending = false;
+      });
     });
     return transaction;
   }

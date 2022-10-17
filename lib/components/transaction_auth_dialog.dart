@@ -32,7 +32,7 @@ class _TransactionAuthDialogState extends State<TransactionAuthDialog> {
       actions: [
         ElevatedButton(
           onPressed: () {
-            print("Cancel");
+            // print("Cancel");
             Navigator.pop(context);
           },
           child: const Text('Cancel'),

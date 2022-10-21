@@ -1,4 +1,4 @@
-<h1 align="center"> :moneybag: Bytebank 4️⃣  </h1>
+<h1 align="center"> Bytebank 4️⃣: Entendendo comunicação HTTP e utilizando Web API </h1>
 
 ## ℹ️ Sobre o projeto
 Aplicação **mobile** desenvolvida durante o curso [Flutter: entendendo comunicação HTTP e utilizando Web API](https://cursos.alura.com.br/course/flutter-comunicacao-http) de Flutter, na plataforma **[Alura](https://www.alura.com.br/)**, pelo instrutor [Alex Felipe](https://cursos.alura.com.br/user/alexfelipe). 
@@ -30,8 +30,8 @@ Primeiro você deve [instalar flutter](https://docs.flutter.dev/get-started/inst
 Então, você pode clocar e entrar na pasta do projeto:
 
 ```bash
-git clone https://github.com/jhoisz/Bytebank-api-v2
-cd Bytebank-api-v2
+https://github.com/jhoisz/Bytebank_Api_Http
+cd Bytebank_Api_Http
 ```
 
 Agora, para testar, você deve instalar os pacotes/dependêncas e usar um dispositivo conectado ao seu computador ou usar um emulador:

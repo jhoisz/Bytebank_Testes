@@ -1,9 +1,12 @@
-<h1 align="center"> Bytebank 4️⃣: Entendendo comunicação HTTP e utilizando Web API </h1>
+<h1 align="center"> Bytebank 7️⃣: Testes de unidade e Widget com Mocks: boas práticas no Flutter </h1>
 
-## ℹ️ Sobre o projeto
-Aplicação **mobile** desenvolvida durante o curso [Flutter: entendendo comunicação HTTP e utilizando Web API](https://cursos.alura.com.br/course/flutter-comunicacao-http) de Flutter, na plataforma **[Alura](https://www.alura.com.br/)**, pelo instrutor [Alex Felipe](https://cursos.alura.com.br/user/alexfelipe). 
+<!-- ## ℹ️ Sobre o projeto -->
+<!-- Aplicação **mobile** desenvolvida durante o curso [Flutter: entendendo comunicação HTTP e utilizando Web API](https://cursos.alura.com.br/course/flutter-comunicacao-http) de Flutter, na plataforma **[Alura](https://www.alura.com.br/)**, pelo instrutor [Alex Felipe](https://cursos.alura.com.br/user/alexfelipe).  -->
 
-## :ledger: Conhecimentos adiquiridos 
+> :construction: Projeto em construção :construction:
+
+<!--
+## :ledger: Conhecimentos adiquiridos
 - Criação de Alerts Dialogs
 - Captura de erros em chamadas de Web Client
 - Apresentação de mensagens ao usuário
@@ -39,4 +42,4 @@ Agora, para testar, você deve instalar os pacotes/dependêncas e usar um dispos
 ```bash
 Flutter get packages
 flutter run
-```
+``` -->
